@@ -1,0 +1,7 @@
+.env
+types/
+node_modules/
+deployments/
+cache/
+artifacts/
+images/*
