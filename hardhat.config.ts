@@ -45,6 +45,9 @@ const config: HardhatUserConfig = {
       url: "https://alfajores-forno.celo-testnet.org",
       accounts,
       chainId: 44787,
+      live: true,
+      gasPrice: 0.5 * 10 ** 9,
+      gas: 10_000_000,
     },
   },
   solidity: {
