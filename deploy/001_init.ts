@@ -22,7 +22,7 @@ const func: DeployFunction = async function ({
     contract: "Timelock",
     args: [
       mobiSig,
-      86400 * 7,
+      300,
     ]
   });
 
@@ -39,9 +39,9 @@ const func: DeployFunction = async function ({
       veMOBI,
       mobiSig,
       implementation.address,
-      10000,
-      10000,
-      parseEther("75000"),
+      60,
+      10,
+      parseEther("2000000"),
     ]
   });
 

@@ -11,19 +11,22 @@ const accounts = {
 };
 
 const config: HardhatUserConfig = {
-  defaultNetwork: "hardhat",
+  defaultNetwork: "alfajores",
   namedAccounts: {
     deployer: {
       default: 2,
     },
     celo: {
       default: "0x471EcE3750Da237f93B8E339c536989b8978a438",
+      alfajores: "0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9"
     },
     mobiSig: {
       default: "0x16E319d8dAFeF25AAcec0dF0f1E349819D36993c",
+      alfajores: "0x59A6AbC89C158ef88d5872CaB4aC3B08474883D9"
     },
     veMOBI: {
       default: "0xd813a846aA9D572140d7ABBB4eFaC8cD786b4c0E",
+      alfajores: "0x7d64708ecf5201cfE74364424AddB0A8FD32174f"
     }
   },
   networks: {
@@ -37,6 +40,11 @@ const config: HardhatUserConfig = {
       url: "https://forno.celo.org",
       accounts,
       chainId: 42220,
+    },
+    alfajores: {
+      url: "https://alfajores-forno.celo-testnet.org",
+      accounts,
+      chainId: 44787,
     },
   },
   solidity: {
