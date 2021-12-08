@@ -25,7 +25,6 @@ async function main() {
       gasLimit: 8_500_000, 
       gasPrice: 0.5 * 10 ** 9
     });
-    console.log(tx)
     await tx.wait()
 }
 
