@@ -27,7 +27,7 @@ contract GovernorBravoDelegate is GovernorBravoDelegateStorageV1, GovernorBravoE
     uint public constant MAX_VOTING_DELAY = 1000; // About 1 week
 
     /// @notice The number of votes in support of a proposal required in order for a quorum to be reached and for a vote to succeed
-    uint public constant quorumVotes =  20000000e18; // 400,000 = 4% of veMOBI
+    uint public constant quorumVotes =  5000000e18; // 400,000 = 4% of veMOBI
 
     /// @notice The maximum number of actions that can be included in a proposal
     uint public constant proposalMaxOperations = 10; // 10 actions
