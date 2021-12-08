@@ -6,7 +6,6 @@ contract Timelock {
     using SafeMath for uint;
 
     event NewAdmin(address indexed newAdmin);
-    event NewPendingAdmin(address indexed newPendingAdmin);
     event NewDelay(uint indexed newDelay);
     event CancelTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature,  bytes data, uint eta);
     event ExecuteTransaction(bytes32 indexed txHash, address indexed target, uint value, string signature,  bytes data, uint eta);
@@ -17,7 +16,6 @@ contract Timelock {
     uint public constant MAXIMUM_DELAY = 30 days;
 
     address public admin;
-    address public pendingAdmin;
     uint public delay;
 
     mapping (bytes32 => bool) public queuedTransactions;
@@ -42,19 +40,11 @@ contract Timelock {
         emit NewDelay(delay);
     }
 
-    function acceptAdmin() public {
-        require(msg.sender == pendingAdmin, "Timelock::acceptAdmin: Call must come from pendingAdmin.");
-        admin = msg.sender;
-        pendingAdmin = address(0);
+    function setAdmin(address admin_) public {
+        require(msg.sender == address(this), "Timelock::setAdmin: Call must come from Timelock.");
+        admin = admin_;
 
         emit NewAdmin(admin);
-    }
-
-    function setPendingAdmin(address pendingAdmin_) public {
-        require(msg.sender == address(this), "Timelock::setPendingAdmin: Call must come from Timelock.");
-        pendingAdmin = pendingAdmin_;
-
-        emit NewPendingAdmin(pendingAdmin);
     }
 
     function queueTransaction(address target, uint value, string memory signature, bytes memory data, uint eta) public returns (bytes32) {
