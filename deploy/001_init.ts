@@ -17,7 +17,7 @@ const func: DeployFunction = async function ({
   if (!deployerSigner) {
     throw new Error("Deployer signer not found");
   }
-  console.log(0)
+
   const timelock = await deploy("Timelock", {
     from: deployer,
     contract: "Timelock",
@@ -28,14 +28,14 @@ const func: DeployFunction = async function ({
     gasLimit: 5000000, 
     gasPrice: BigNumber.from(0.5 * 10 ** 9)
   });
-  console.log(1)
+
   const implementation = await deploy("GovernorBravoDelegate", {
     from: deployer,
     contract: "GovernorBravoDelegate",
     gasLimit: 5000000, 
     gasPrice: BigNumber.from(0.5 * 10 ** 9)
   });
-  console.log(2)
+
   const governance = await deploy("GovernorBravoDelegator", {
     from: deployer,
     contract: "GovernorBravoDelegator",
