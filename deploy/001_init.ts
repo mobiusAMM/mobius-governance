@@ -72,7 +72,6 @@ const func: DeployFunction = async function ({
   await tx.wait()
 
   console.log(await timelock.admin())
-
   console.log("Timelock:", timelock.address);
   console.log("Implementation:", implementation.address);
   console.log("Governance:", governance.address);
