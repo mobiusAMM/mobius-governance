@@ -1,5 +1,6 @@
 import hre from "hardhat"
 import { GovernorBravoDelegate__factory } from "../types"
+import { parseEther } from "@ethersproject/units"
 
 async function main() {
   const namedAccounts = await hre.getNamedAccounts();
@@ -43,11 +44,17 @@ async function main() {
   ## Concluding Thoughts
   We believe this simple change could boost Uniswap’s competitiveness in low volatility pairs, and the change presents minimal risk for Uniswap.`
 
+  const target = "0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1"
+  const value = 0
+  const signature = "approve(address,uint256)"
+  const abi = new hre.ethers.utils.AbiCoder();
+  const data = abi.encode(['address', 'uint256'], ['0x7DFAFF53284Aac673D48EA3fA1D70844b7F62E24', parseEther('1')]);
+
   const tx = await governance.propose(
-    ["0x874069Fa1Eb16D44d622F2e0Ca25eeA172369bC1"],
-    [0],
-    ["approve(address, uint256)"],
-    ["0x0000000000000000000000000a125d473cd3b1968e728ddf7d424c928c09222affffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff"],
+    [target],
+    [value],
+    [signature],
+    [data],
     description,
     {
       gasLimit: 8_500_000, 

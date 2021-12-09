@@ -15,7 +15,7 @@ async function main() {
   const { address: governanceAddress } = await hre.deployments.get("GovernorBravoDelegator");
   const governance = GovernorBravoDelegate__factory.connect(governanceAddress, signer);
 
-  const tx = await governance.execute(1,
+  const tx = await governance.execute(2,
     {
       gasLimit: 8_500_000, 
       gasPrice: 0.5 * 10 ** 9
