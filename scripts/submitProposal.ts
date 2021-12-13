@@ -44,7 +44,7 @@ async function main() {
   ## Concluding Thoughts
   We believe this simple change could boost Uniswap’s competitiveness in low volatility pairs, and the change presents minimal risk for Uniswap.`
 
-  const target = "0x960764F12F11Fca65813CFF5964786b78df9bB44"
+  const target = "0xB4EdE83B375fa524Dd9FC92581a060A428Cb6B7e"
   const value = 0
   const signature = "_setVotingDelay(uint256)"
   const abi = new hre.ethers.utils.AbiCoder();
