@@ -16,7 +16,7 @@ async function main() {
   const { address: governanceAddress } = await hre.deployments.get("GovernorBravoDelegator");
   const governance = GovernorBravoDelegate__factory.connect(governanceAddress, signer);
 
-  const description: string = `# Set voting delay to 15 sec
+  const description: string = `# Set voting delay to 15 blocks
   ## TLDR: Uniswap should add a 1bps fee tier with 1 tick spacing. This change is straightforward from a technical perspective and would help Uniswap compete in stablecoin <> stablecoin pairs, where the majority of the market share is taken by Curve and DODO.
   ## Background on pool fees Uniswap v3 allows for the creation of new pools via calls to the [factory contract](https://etherscan.io/address/0x1F98431c8aD98523631AE4a59f267346ea31F984). In order to keep liquidity for pairs consolidated, only a few fee options are allowed–currently, 5, 30, and 100 basis points are supported (10, 60, 200 tick spacing).
   Governance should add a 1 basis point fee option for the following reasons: * Curve’s stablecoin markets have 3-4 bps fees. * Dodo’s stablecoin markets have a 1 bps fee. * FTX’s fees for retail are 2/7bps fees and for whales 0/4bps.
@@ -44,7 +44,7 @@ async function main() {
   ## Concluding Thoughts
   We believe this simple change could boost Uniswap’s competitiveness in low volatility pairs, and the change presents minimal risk for Uniswap.`
 
-  const target = "0xA878C6787490c9f0d2406bcd161b61f128Ab2708"
+  const target = "0x960764F12F11Fca65813CFF5964786b78df9bB44"
   const value = 0
   const signature = "_setVotingDelay(uint256)"
   const abi = new hre.ethers.utils.AbiCoder();

@@ -41,7 +41,7 @@ contract Timelock {
     }
 
     function setAdmin(address admin_) public {
-        require(msg.sender == address(this), "Timelock::setAdmin: Call must come from Timelock.");
+        require(msg.sender == admin || msg.sender == address(this), "Timelock::setAdmin: Call must come from Timelock or Admin.");
         admin = admin_;
 
         emit NewAdmin(admin);
