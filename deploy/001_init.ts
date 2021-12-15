@@ -61,7 +61,6 @@ const func: DeployFunction = async function ({
     gasPrice: BigNumber.from(0.5 * 10 ** 9)});
   await tx.wait()
 
-  console.log(await timelock.admin())
   console.log("Timelock:", timelock.address);
   console.log("Implementation:", implementation.address);
   console.log("Governance:", governance.address);
