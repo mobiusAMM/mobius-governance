@@ -4,6 +4,9 @@ This governance platform is a fork of Compound Finance's Governor Bravo contract
 ## Alterations 
 To adapt for veMOBI, we call the balanceOfAt() function rather than getPriorVotes(). The initiation has also been removed because this is the first instance of governance for Mobius whereas Governor Bravo was the second governing platform for Compound. Some slight alteration have been made to the initialization as a result of this being our first governance instance and Governor Bravo being Compound's second.
 
+## How governance work
+Mobius governance works by allowing veMOBI token holders to submit and vote on proposals, which can alter smart contracts that are under the control of the Mobius governance contract. The basic building block of this governance platform is proposals. Proposals can be submitted by anyone who has at least the minimum threshold of votes. After a delay period, the proposal can be voted on by all the veMOBI holders. The voting power for a proposal is proportional to the amount of veMOBI at the time the proposal was submitted. veMOBI holders can vote on the proposal at any point during the voting period. After the voting period, if the proposal has more `for` votes than the quorum and more `for` votes than `against` votes, the proposal can be queued in the timelock by anyone. After the timelock period has expired, anyone can tell the timelock to execute the transaction.
+
 ## How to use
 
 ### Initial setup
