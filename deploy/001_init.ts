@@ -36,6 +36,7 @@ const func: DeployFunction = async function ({
     gasLimit: 5000000, 
     gasPrice: BigNumber.from(0.5 * 10 ** 9)
   });
+
   const governance = await deploy("GovernorBravoDelegator", {
     from: deployer,
     contract: "GovernorBravoDelegator",
@@ -51,6 +52,7 @@ const func: DeployFunction = async function ({
     gasLimit: 5000000, 
     gasPrice: BigNumber.from(0.5 * 10 ** 9)
   });
+  
   const timelock = Timelock__factory.connect(
     timelockAddress,
     deployerSigner
@@ -61,7 +63,6 @@ const func: DeployFunction = async function ({
     gasPrice: BigNumber.from(0.5 * 10 ** 9)});
   await tx.wait()
 
-  console.log(await timelock.admin())
   console.log("Timelock:", timelock.address);
   console.log("Implementation:", implementation.address);
   console.log("Governance:", governance.address);

@@ -8,6 +8,7 @@ import { HardhatUserConfig } from "hardhat/config";
 
 const accounts = {
   mnemonic: process.env.MNEMONIC || "test test test test test test test test test test test junk",
+  // path: "m/44'/52752'/0'/0"
 };
 
 const config: HardhatUserConfig = {
