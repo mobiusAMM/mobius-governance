@@ -25,7 +25,7 @@ Proposals can be submitted directly using the script `scripts/submitProposal.ts`
 
 
 ### Forwarding a proposal
-Once a proposal has passed, it must be forwarded through the timelock before it is executed. The two steps are queing the proposal and executing the proposal. You must s
+Once a proposal has passed, it must be forwarded through the timelock before it is executed. The two steps are queing the proposal and executing the proposal. You must:
 1. Specify the proposal number by changing the first argument to either the `governance.queue()` function or the `governance.execute()`, which specifies the proposal id. This should match what is shown on the interface.
-1. Run the command `yarn hardhat run scripts/queueProposal.ts --network celo` to move the proposal into the timelock after the proposal has passed.
-2. Run the command `yarn hardhat run scripts/executeProposal.ts --network celo` to execute the proposal from the timelock after it has stayed there for the required amount of time.
+2. Run the command `yarn hardhat run scripts/queueProposal.ts --network celo` to move the proposal into the timelock after the proposal has passed.
+3. Run the command `yarn hardhat run scripts/executeProposal.ts --network celo` to execute the proposal from the timelock after it has stayed there for the required amount of time.
