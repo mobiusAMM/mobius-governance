@@ -27,7 +27,7 @@ Version used amongst team for testing
 Version used for myself for testing
 - veMOBI: 0xd2Fc9ebE9602340f9917794d1B549cA3A275dd9f
 - GovernorBravoDelgator: 0x30Ba309aB83641cb293d98b7A6e7b8bd0d49f50D
-- GovernorBravoDelegate: 0x0FBd0141D46AaaB49ee032C7dCaD0Fb7ed9c80B0
+- GovernorBravoDelegate: 0xc469b24f9b61789810e47f85ce71e17fA2A35e6E
 - TimeLock: 0xDC4c8ca5C18A18A08a64a30B369E7a8B40e5fbcC
 
 ## How to use
