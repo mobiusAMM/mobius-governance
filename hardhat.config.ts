@@ -22,7 +22,7 @@ const config: HardhatUserConfig = {
       alfajores: "0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9"
     },
     veMOBI: {
-      default: "0xE9d0375cd6fC027A1a0eC39BB4c9928E5aBec27e",
+      default: "0xd2Fc9ebE9602340f9917794d1B549cA3A275dd9f",
       alfajores: "0x7d64708ecf5201cfE74364424AddB0A8FD32174f"
     }
   },

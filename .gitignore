@@ -3,4 +3,4 @@ types/
 node_modules/
 cache/
 artifacts/
-images/*
+deployments/
