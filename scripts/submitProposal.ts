@@ -4,7 +4,7 @@ import { parseEther } from "ethers/lib/utils";
 
 async function main() {
   const namedAccounts = await hre.getNamedAccounts();
-  const { deployer, veMOBI } = namedAccounts;
+  const { deployer } = namedAccounts;
   if (!deployer) {
     throw new Error("Deployer not found");
   }
@@ -16,7 +16,7 @@ async function main() {
   const { address: governanceAddress } = await hre.deployments.get("GovernorBravoDelegator");
   const governance = GovernorBravoDelegate__factory.connect(governanceAddress, signer);
 
-  const description: string = `# Switch Implementation
+  const description: string = `# Add Gauge
   ## TLDR: Uniswap should add a 1bps fee tier with 1 tick spacing. This change is straightforward from a technical perspective and would help Uniswap compete in stablecoin <> stablecoin pairs, where the majority of the market share is taken by Curve and DODO.
   ## Background on pool fees Uniswap v3 allows for the creation of new pools via calls to the [factory contract](https://etherscan.io/address/0x1F98431c8aD98523631AE4a59f267346ea31F984). In order to keep liquidity for pairs consolidated, only a few fee options are allowed–currently, 5, 30, and 100 basis points are supported (10, 60, 200 tick spacing).
   Governance should add a 1 basis point fee option for the following reasons: * Curve’s stablecoin markets have 3-4 bps fees. * Dodo’s stablecoin markets have a 1 bps fee. * FTX’s fees for retail are 2/7bps fees and for whales 0/4bps.
@@ -44,12 +44,12 @@ async function main() {
   ## Concluding Thoughts
   We believe this simple change could boost Uniswap’s competitiveness in low volatility pairs, and the change presents minimal risk for Uniswap.`
 
-  const target = [governanceAddress]
+  const target = ["0xF8eABb30A124AAc16B9eD6aFaed830BE30fB128E"]
   const value = [0]
-  const signature = ["_setImplementation(address)"]
+  const signature = ["add_gauge(address,int128,uint256)"]
   const abi = new hre.ethers.utils.AbiCoder()
   const data = [
-    abi.encode(['address'], ["0xc469b24f9b61789810e47f85ce71e17fA2A35e6E"])]
+    abi.encode(['address', 'int128', 'uint256'], ["0x507A04850028A3E309CE5Cb4dcB3C06343552784", 0, 100])]
 
   const tx = await governance.propose(
     target,
