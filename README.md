@@ -12,9 +12,9 @@ Mobius governance works by allowing veMOBI token holders to submit and vote on p
 ### Prod
 Version used in production
 - veMOBI: 0xd813a846aA9D572140d7ABBB4eFaC8cD786b4c0E
-- GovernorBravoDelgator:
-- GovernorBravoDelegate:
-- TimeLock:
+- GovernorBravoDelgator: 0xA5Eb84773633f33d442ECDaC48212B0dEBf3C84A
+- GovernorBravoDelegate: 0xe15826ec86F054EE0847532F8356f55fF0A1a3D5
+- TimeLock:  0x7d9Af9dF33D6CAB895B4cF3422D790cbE98B48c8
 
 ### Team testing
 Version used amongst team for testing
