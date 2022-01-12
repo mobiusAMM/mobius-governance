@@ -7,7 +7,10 @@ import "@nomiclabs/hardhat-ethers";
 import { HardhatUserConfig } from "hardhat/config";
 
 const accounts = {
-  mnemonic: process.env.MNEMONIC || "test test test test test test test test test test test junk",
+  mnemonic:
+    process.env.MNEMONIC ||
+    "test test test test test test test test test test test junk",
+  path: "m/44'/52752'/0'/0",
 };
 
 const config: HardhatUserConfig = {
@@ -18,12 +21,12 @@ const config: HardhatUserConfig = {
     },
     celo: {
       default: "0x471EcE3750Da237f93B8E339c536989b8978a438",
-      alfajores: "0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9"
+      alfajores: "0xF194afDf50B03e69Bd7D057c1Aa9e10c9954E4C9",
     },
     veMOBI: {
       default: "0xE9d0375cd6fC027A1a0eC39BB4c9928E5aBec27e",
-      alfajores: "0x7d64708ecf5201cfE74364424AddB0A8FD32174f"
-    }
+      alfajores: "0x7d64708ecf5201cfE74364424AddB0A8FD32174f",
+    },
   },
   networks: {
     hardhat: {
