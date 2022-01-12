@@ -24,7 +24,7 @@ const func: DeployFunction = async function ({
     contract: "Timelock",
     args: [
       deployer,
-      3600,
+      86400,
     ],
     gasLimit: 5000000, 
     gasPrice: BigNumber.from(0.5 * 10 ** 9)
@@ -45,9 +45,9 @@ const func: DeployFunction = async function ({
       veMOBI,
       timelockAddress,
       implementation.address,
-      8640,
-      10,
-      parseEther("5000000"),
+      51840,
+      17280,
+      parseEther("1000"),
     ],
     gasLimit: 5000000, 
     gasPrice: BigNumber.from(0.5 * 10 ** 9)

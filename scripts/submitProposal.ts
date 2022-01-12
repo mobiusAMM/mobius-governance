@@ -1,5 +1,6 @@
-import hre from "hardhat"
-import { GovernorBravoDelegate__factory } from "../types"
+import hre from "hardhat";
+import { GovernorBravoDelegate__factory } from "../types";
+import { parseEther } from "ethers/lib/utils";
 
 async function main() {
   const namedAccounts = await hre.getNamedAccounts();
@@ -12,10 +13,15 @@ async function main() {
     throw new Error("Deployer signer not found");
   }
 
-  const { address: governanceAddress } = await hre.deployments.get("GovernorBravoDelegator");
-  const governance = GovernorBravoDelegate__factory.connect(governanceAddress, signer);
+  const { address: governanceAddress } = await hre.deployments.get(
+    "GovernorBravoDelegator"
+  );
+  const governance = GovernorBravoDelegate__factory.connect(
+    governanceAddress,
+    signer
+  );
 
-  const description: string = `# Set voting delay to 15 blocks
+  const description: string = `# Add Gauge
   ## TLDR: Uniswap should add a 1bps fee tier with 1 tick spacing. This change is straightforward from a technical perspective and would help Uniswap compete in stablecoin <> stablecoin pairs, where the majority of the market share is taken by Curve and DODO.
   ## Background on pool fees Uniswap v3 allows for the creation of new pools via calls to the [factory contract](https://etherscan.io/address/0x1F98431c8aD98523631AE4a59f267346ea31F984). In order to keep liquidity for pairs consolidated, only a few fee options are allowed–currently, 5, 30, and 100 basis points are supported (10, 60, 200 tick spacing).
   Governance should add a 1 basis point fee option for the following reasons: * Curve’s stablecoin markets have 3-4 bps fees. * Dodo’s stablecoin markets have a 1 bps fee. * FTX’s fees for retail are 2/7bps fees and for whales 0/4bps.
@@ -41,25 +47,31 @@ async function main() {
   Assuming overall volume stays stable (although it’s worth mentioning more competitive fees should grow the pie), total fees paid will go down (volume would have to 5X for fees paid to LPs to stay the same).
   However, LPs are not the only constituency to take into consideration–takers will be paying lower fees in aggregate. Growing Uniswap’s market share and being the best place to trade across many pairs is important. These pools could become more enticing to large traders looking to swap stablecoins, for instance.
   ## Concluding Thoughts
-  We believe this simple change could boost Uniswap’s competitiveness in low volatility pairs, and the change presents minimal risk for Uniswap.`
+  We believe this simple change could boost Uniswap’s competitiveness in low volatility pairs, and the change presents minimal risk for Uniswap.`;
 
-  const target = "0xB4EdE83B375fa524Dd9FC92581a060A428Cb6B7e"
-  const value = 0
-  const signature = "_setVotingDelay(uint256)"
+  const target = ["0xF8eABb30A124AAc16B9eD6aFaed830BE30fB128E"];
+  const value = [0];
+  const signature = ["add_gauge(address,int128,uint256)"];
   const abi = new hre.ethers.utils.AbiCoder();
-  const data = abi.encode(['uint256'], [15]);
+  const data = [
+    abi.encode(
+      ["address", "int128", "uint256"],
+      ["0x507A04850028A3E309CE5Cb4dcB3C06343552784", 0, 100]
+    ),
+  ];
 
   const tx = await governance.propose(
-    [target],
-    [value],
-    [signature],
-    [data],
+    target,
+    value,
+    signature,
+    data,
     description,
     {
-      gasLimit: 8_500_000, 
-      gasPrice: 0.5 * 10 ** 9
-    });
-    await tx.wait()
+      gasLimit: 8_500_000,
+      gasPrice: 0.5 * 10 ** 9,
+    }
+  );
+  await tx.wait();
 }
 
 main()
