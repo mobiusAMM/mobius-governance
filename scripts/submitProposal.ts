@@ -1,6 +1,5 @@
 import hre from "hardhat"
 import { GovernorBravoDelegate__factory } from "../types"
-import { parseEther } from "@ethersproject/units"
 
 async function main() {
   const namedAccounts = await hre.getNamedAccounts();
