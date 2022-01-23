@@ -1,5 +1,5 @@
 import hre from "hardhat"
-import { GovernorBravoDelegate__factory } from "../types"
+import { BigNumber } from "@ethersproject/bignumber"
 
 async function main() {
   const namedAccounts = await hre.getNamedAccounts();
@@ -12,15 +12,16 @@ async function main() {
     throw new Error("Deployer signer not found");
   }
 
-  const { address: governanceAddress } = await hre.deployments.get("GovernorBravoDelegator");
-  const governance = GovernorBravoDelegate__factory.connect(governanceAddress, signer);
+  const { deploy } = hre.deployments
 
-  const tx = await governance.execute(9,
-    {
-      gasLimit: 8_500_000, 
-      gasPrice: 0.5 * 10 ** 9
-    });
-  await tx.wait()
+  const { address: implementationAddress } = await deploy("GovernorBravoDelegate", {
+    from: deployer,
+    contract: "GovernorBravoDelegate",
+    gasLimit: 5000000, 
+    gasPrice: BigNumber.from(0.5 * 10 ** 9)
+  });
+
+  console.log('Implementation:', implementationAddress)
 }
 
 main()
